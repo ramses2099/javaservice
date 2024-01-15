@@ -1,7 +1,10 @@
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import java.awt.event.*;;
+import java.awt.event.*;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;;
 /**
  * Main
  */
@@ -33,6 +36,21 @@ public class Main extends JFrame {
 
 
     public static void main(String[] args) {
-        new Main();
+        //new Main();
+        
+        /* Implement timer task */
+        TimerTask task = new TimerTask() {
+
+            @Override
+            public void run() {
+                System.out.println(new Date()+" Thread: "+ Thread.currentThread().getName());                
+            }
+            
+        };
+        //
+        Timer timer = new Timer("Timer");
+        long delay = 5000L;
+        timer.schedule(task, delay,delay);
+
     }
 }
